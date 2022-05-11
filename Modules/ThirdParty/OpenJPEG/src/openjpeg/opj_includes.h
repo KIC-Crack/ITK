@@ -88,37 +88,37 @@ Most compilers implement their own version of this keyword ...
 #endif
 
 /* MSVC and Borland C do not have lrintf */
-#if defined(_MSC_VER) || defined(__BORLANDC__)
+// #if defined(_MSC_VER) || defined(__BORLANDC__)
 
 /* MSVC 64bits doesn't support _asm */
-#if !defined(_WIN64)
-static INLINE long opj_lrintf(float f){
-  int i;
+// #if !defined(_WIN64)
+// static INLINE long opj_lrintf(float f){
+//   int i;
 
-  _asm{
-    fld f
-    fistp i
-  };
+//   _asm{
+//     fld f
+//     fistp i
+//   };
 
-  return i;
-}
-#else
-static INLINE long opj_lrintf(float x){
-  long r;
-  if (x>=0.f)
-  {
-     x+=0.5f;
-  }
-  else
-  {
-     x-=0.5f;
-  }
-  r = (long)(x);
-  if ( x != (float)(r) ) return r;
-  return 2*(r/2);
-}
-#endif
+//   return i;
+// }
+// #else
+// static INLINE long opj_lrintf(float x){
+//   long r;
+//   if (x>=0.f)
+//   {
+//      x+=0.5f;
+//   }
+//   else
+//   {
+//      x-=0.5f;
+//   }
+//   r = (long)(x);
+//   if ( x != (float)(r) ) return r;
+//   return 2*(r/2);
+// }
+// #endif
 
-#endif
+// #endif
 
 #endif /* OPJ_INCLUDES_H */
